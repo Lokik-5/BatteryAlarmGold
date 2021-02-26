@@ -1,0 +1,80 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+
+android {
+    compileSdkVersion           androidCompileSdkVersion
+    buildToolsVersion           androidBuildToolsVersion
+
+    defaultConfig {
+        applicationId           "com.app.batteryalarmgold"
+        minSdkVersion           androidMinSdkVersion
+        targetSdkVersion        androidTargetSdkVersion
+        versionCode             1
+        versionName             "1.0.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+
+        debug {
+            minifyEnabled       true    // shrink
+            useProguard         false   // don't obfuscate
+
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+            minifyEnabled       true    // shrink
+            useProguard         true    // obfuscate
+
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    // Kotlin libs
+    implementation          libs.kotlinStdlib
+
+    // JetPack libs
+    implementation          libs.appCompat
+    implementation          libs.workManager
+    implementation          libs.viewModel
+    implementation          libs.liveData
+    implementation          libs.lifeCycleProcess
+    implementation          libs.lifeCycleCommon
+    implementation          libs.navigationFragment
+    implementation          libs.navigationUI
+    implementation          libs.coreKtx
+    implementation          libs.activity
+    implementation          libs.fragment
+
+    // Android libs
+    implementation          libs.constraintLayout
+
+    // Material lib
+    implementation          libs.material
+
+    // Third-Party libs
+    implementation          libs.timber
+    implementation          libs.waveLoadingView
+
+    // Test libs
+    testImplementation        testLibs.junit
+    androidTestImplementation testLibs.extJunit
+    androidTestImplementation testLibs.espressoCore
+}
