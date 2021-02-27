@@ -65,6 +65,9 @@ ext {
 
     libs = [
 
+            // Module
+            core                    : project(":core"),
+
             // Kotlin
             kotlinStdlib            : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version",
 
