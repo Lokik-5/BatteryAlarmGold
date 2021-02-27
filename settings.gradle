@@ -1,2 +1,4 @@
+include ':core'
 include ':app'
+project(':core').projectDir = new File(rootDir, 'sub-modules/AppCoreFeatures/core/')
 rootProject.name = "BatteryAlarmGold"

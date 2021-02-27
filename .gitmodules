@@ -1,0 +1,3 @@
+[submodule "sub-modules/AppCoreFeatures"]
+	path = sub-modules/AppCoreFeatures
+	url = https://github.com/Lokik-5/AppCoreFeatures.git
