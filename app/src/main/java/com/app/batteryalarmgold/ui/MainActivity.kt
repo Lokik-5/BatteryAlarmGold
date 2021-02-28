@@ -1,6 +1,7 @@
-package com.app.batteryalarmgold
+package com.app.batteryalarmgold.ui
 
 import android.os.Bundle
+import com.app.batteryalarmgold.R
 import com.app.core.activity.BaseActivity
 
 class MainActivity : BaseActivity() {

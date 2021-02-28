@@ -60,6 +60,7 @@ dependencies {
     implementation          libs.liveData
     implementation          libs.lifeCycleProcess
     implementation          libs.lifeCycleCommon
+    implementation          libs.lifeCycleService
     implementation          libs.navigationFragment
     implementation          libs.navigationUI
     implementation          libs.coreKtx

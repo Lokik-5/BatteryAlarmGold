@@ -87,6 +87,7 @@ ext {
             liveData                : "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version",
             lifeCycleProcess        : "androidx.lifecycle:lifecycle-process:$lifecycle_version",
             lifeCycleCommon         : "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version",
+            lifeCycleService        : "androidx.lifecycle:lifecycle-service:$lifecycle_version",
             navigationFragment      : "android.arch.navigation:navigation-fragment-ktx:$navigation_version",
             navigationUI            : "android.arch.navigation:navigation-ui-ktx:$navigation_version",
             coreKtx                 : "androidx.core:core-ktx:$corektx_version",
