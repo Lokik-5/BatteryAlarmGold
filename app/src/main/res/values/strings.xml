@@ -38,6 +38,9 @@
     <string name="health_over_voltage">Over Voltage</string>
     <string name="health_failure">Failure</string>
 
-    <string name="msg_unknown">Unknown!</string>
+    <string name="msg_unknown">Unknown</string>
+
+    <string name="alarm_off">Off</string>
+    <string name="alarm_on">On</string>
 
 </resources>

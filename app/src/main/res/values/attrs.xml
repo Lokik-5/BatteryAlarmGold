@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- IDCard view attributes. -->
+    <declare-styleable name="IDCardView">
+        <attr name="idIcon" format="color|reference" />
+        <attr name="idIconBackgroundColor" format="color|reference" />
+        <attr name="idTitle" format="string" />
+        <attr name="idDescription" format="string" />
+    </declare-styleable>
+
+    <!-- Custom WaveLoadingView theme attributes. -->
+    <attr name="wlvCenterTitleColor" format="color"/>
+    <attr name="wlvBatteryOkColor" format="color"/>
+    <attr name="wlvBatteryLowColor" format="color"/>
+
+</resources>

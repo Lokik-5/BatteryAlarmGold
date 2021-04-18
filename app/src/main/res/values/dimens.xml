@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Dimens resource used for changing the view size. -->
+
+    <!-- WaveLoadingView dimens. -->
+    <dimen name="wlv_border_width">1dp</dimen>
+
+    <dimen name="card_height">300dp</dimen>
+
+    <!-- Toolbar dimens. -->
+    <dimen name="toolbar_min_height">86dp</dimen>
+    <item name="toolbar_title_color_start_index" type="integer" format="integer">12</item>
+    <item name="toolbar_title_color_end_index" type="integer" format="integer">16</item>
+
+    <!-- BottomSheet dimens. -->
+    <dimen name="peek_height_all">56dp</dimen>
+
+</resources>

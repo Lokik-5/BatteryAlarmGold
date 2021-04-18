@@ -1,6 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- ============== MaterialButton style. ================ -->
+
+    <!-- OutlinedButton style. -->
+    <style name="Widget.BatteryAlarmGold.Button.OutlinedButton" parent="Widget.Core.Button.OutlinedButton">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.BatteryAlarmGold.Button</item>
+        <item name="android:textAppearance">?attr/textAppearanceButton</item>
+    </style>
+
+    <!-- OutlinedButton with icon style. -->
+    <style name="Widget.BatteryAlarmGold.Button.OutlinedButton.WithIcon" parent="Widget.Core.Button.OutlinedButton.WithIcon">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.BatteryAlarmGold.Button</item>
+        <item name="android:textAppearance">?attr/textAppearanceButton</item>
+    </style>
+
+    <!-- OutlineButton with icon only style. -->
+    <style name="Widget.BatteryAlarmGold.Button.OutlinedButton.IconOnly" parent="Widget.Core.Button.OutlinedButton.IconOnly">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.BatteryAlarmGold.Button</item>
+    </style>
+
+    <!-- ============== MaterialCardView style. ================ -->
+
+    <!-- OutlinedCardView style. -->
+    <style name="Widget.BatteryAlarmGold.CardView.OutlinedCardView" parent="Widget.Core.CardView.OutlinedCardView">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.BatteryAlarmGold.CardView</item>
+    </style>
+
+    <!-- CheckedCardView style. -->
+    <style name="Widget.BatteryAlarmGold.CardView.CheckedCardView" parent="Widget.Core.CardView.CheckedCardView">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.BatteryAlarmGold.CardView</item>
+    </style>
+
     <!-- ================ Slider style. ================== -->
 
     <!-- Fancy slider style. -->
@@ -8,21 +39,38 @@
         <item name="materialThemeOverlay">@style/ThemeOverlay.BatteryAlarmGold.Slider</item>
     </style>
 
-    <!-- ============== MaterialButton style. ================ -->
+    <!-- ============== MaterialTextView style. ================ -->
 
-    <!-- OutlinedButton style. -->
-    <style name="Widget.BatteryAlarmGold.Button.OutlinedButton" parent="Widget.Core.Button.OutlinedButton">
-        <item name="materialThemeOverlay">@style/ThemeOverlay.BatteryAlarmGold.Button</item>
+    <!-- Style for single line textView. -->
+    <style name="Widget.BatteryAlarmGold.TextView.SingleLine" parent="Widget.MaterialComponents.TextView">
+        <item name="android:lines">1</item>
+        <item name="android:ellipsize">end</item>
     </style>
 
-    <!-- OutlinedButton with icon style. -->
-    <style name="Widget.BatteryAlarmGold.Button.OutlinedButton.WithIcon" parent="Widget.Core.Button.OutlinedButton.WithIcon">
-        <item name="materialThemeOverlay">@style/ThemeOverlay.BatteryAlarmGold.Button</item>
+    <!-- ============== MaterialToolbar style. ================ -->
+
+    <style name="Widget.BatteryAlarmGold.Toolbar" parent="">
+        <item name="layout_scrollFlags">scroll|enterAlways|snap</item>
+        <item name="android:minHeight">@dimen/toolbar_min_height</item>
+        <item name="titleTextAppearance">?attr/textAppearanceHeadline5</item>
     </style>
 
-    <!-- OutlineButton with icon only style. -->
-    <style name="Widget.BatteryAlarmGold.Button.OutlinedButton.IconOnly" parent="Widget.Core.Button.OutlinedButton.IconOnly">
-        <item name="materialThemeOverlay">@style/ThemeOverlay.BatteryAlarmGold.Button</item>
+    <!-- ============== MaterialButtonToggleGroup style. ================ -->
+
+    <style name="Widget.BatteryAlarmGold.ButtonToggleGroup" parent="">
+        <item name="singleSelection">true</item>
+        <item name="selectionRequired">true</item>
+        <item name="android:background">?attr/colorSurface</item>
+    </style>
+
+    <!-- ============== CustomView style. ================ -->
+
+    <!-- Style for IDCardView. -->
+    <style name="Widget.BatteryAlarmGold.IDCardView" parent="Widget.BatteryAlarmGold.CardView.CheckedCardView">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.Core.MediumComponent.Cut.Top.Left</item>
+        <item name="android:layout_margin">@dimen/grid_1</item>
+        <item name="idIconBackgroundColor">@drawable/gradient_gold</item>
+        <item name="cardElevation">@dimen/plane_04</item>
     </style>
 
 </resources>

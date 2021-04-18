@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.app.batteryalarmgold.batteryhelper.BatteryProfileHelper.BatteryProfile"/>
+        <import type="com.app.batteryalarmgold.ui.viewmodel.MainViewModel"/>
+        <variable name="viewModel" type="MainViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.home.fragment.HomeFragment">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:liftOnScroll="true"
+            app:liftOnScrollTargetViewId="@id/scroll_home">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar_home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.BatteryAlarmGold.Toolbar"
+                app:title="@{@string/app_name}"
+                app:titleTextColor="@{@color/color_secondary_variant_emphasis_high}"
+                app:titleColorStartIndex="@{@integer/toolbar_title_color_start_index}"
+                app:titleColorEndIndex="@{@integer/toolbar_title_color_end_index}"
+                app:titleSize="@{1.3f}"/>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scroll_home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:fillViewport="true">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_home_level"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/card_height"
+                    style="@style/Widget.BatteryAlarmGold.CardView.CheckedCardView"
+                    android:layout_margin="@dimen/grid_1"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <me.itangqi.waveloadingview.WaveLoadingView
+                        android:id="@+id/wlv_home_level"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:wlv_waveColor="?attr/colorSecondary"
+                        app:wlv_shapeType="square"
+                        app:wlvProgress="@{viewModel.batteryDetail.get(BatteryProfile.LEVEL)}"
+                        android:layout_gravity="center"
+                        android:layout_marginVertical="@dimen/grid_4"/>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.button.MaterialButtonToggleGroup
+                    android:id="@+id/toggle_btn_home_alarm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.BatteryAlarmGold.ButtonToggleGroup"
+                    app:checkedButton="@id/btn_home_alarm_on"
+                    app:layout_constraintTop_toBottomOf="@id/card_home_level"
+                    app:layout_constraintBottom_toBottomOf="@id/card_home_level"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_home_alarm_off"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/Widget.BatteryAlarmGold.Button.OutlinedButton.WithIcon"
+                        app:icon="@drawable/v_alarm_off"
+                        android:text="@string/alarm_off" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_home_alarm_on"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/Widget.BatteryAlarmGold.Button.OutlinedButton.WithIcon"
+                        app:icon="@drawable/v_alarm_on"
+                        android:text="@string/alarm_on"/>
+
+                </com.google.android.material.button.MaterialButtonToggleGroup>
+
+                <com.app.batteryalarmgold.widget.IDCardView
+                    android:id="@+id/id_home_temperature"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.BatteryAlarmGold.IDCardView"
+                    app:idIcon="@drawable/v_temperature"
+                    app:idTitle="@string/temperature"
+                    app:idDescription="@{viewModel.batteryDetail.get(BatteryProfile.TEMPERATURE) + ` ` + viewModel.temperatureUnit.unit ?? @string/msg_unknown}"
+                    app:layout_constraintTop_toBottomOf="@id/toggle_btn_home_alarm"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/id_home_voltage" />
+
+                <com.app.batteryalarmgold.widget.IDCardView
+                    android:id="@+id/id_home_voltage"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.BatteryAlarmGold.IDCardView"
+                    app:idIcon="@drawable/v_voltage"
+                    app:idTitle="@string/voltage"
+                    app:idDescription="@{viewModel.batteryDetail.get(BatteryProfile.VOLTAGE) + ` ` + viewModel.voltageUnit.unit ?? @string/msg_unknown}"
+                    app:layout_constraintTop_toBottomOf="@id/toggle_btn_home_alarm"
+                    app:layout_constraintStart_toEndOf="@id/id_home_temperature"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <androidx.constraintlayout.widget.Barrier
+                    android:id="@+id/barrier_home_temp_volt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:barrierDirection="bottom"
+                    app:constraint_referenced_ids="id_home_temperature, id_home_voltage"/>
+
+                <com.app.batteryalarmgold.widget.IDCardView
+                    android:id="@+id/id_home_technology"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.BatteryAlarmGold.IDCardView"
+                    app:idIcon="@drawable/v_technology"
+                    app:idTitle="@string/technology"
+                    app:idDescription="@{viewModel.batteryDetail.get(BatteryProfile.TECHNOLOGY) ?? @string/msg_unknown}"
+                    app:layout_constraintTop_toBottomOf="@id/barrier_home_temp_volt"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/id_home_plugged" />
+
+                <com.app.batteryalarmgold.widget.IDCardView
+                    android:id="@+id/id_home_plugged"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.BatteryAlarmGold.IDCardView"
+                    app:idIcon="@drawable/v_plugged"
+                    app:idTitle="@string/plugged"
+                    app:idDescription="@{viewModel.batteryDetail.get(BatteryProfile.PLUGGED) ?? @string/msg_unknown}"
+                    app:layout_constraintTop_toBottomOf="@id/barrier_home_temp_volt"
+                    app:layout_constraintStart_toEndOf="@id/id_home_technology"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <androidx.constraintlayout.widget.Barrier
+                    android:id="@+id/barrier_home_tech_plug"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:barrierDirection="bottom"
+                    app:constraint_referenced_ids="id_home_technology, id_home_plugged"/>
+
+                <com.app.batteryalarmgold.widget.IDCardView
+                    android:id="@+id/id_home_health"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.BatteryAlarmGold.IDCardView"
+                    app:idIcon="@drawable/v_health"
+                    app:idTitle="@string/health"
+                    app:idDescription="@{viewModel.batteryDetail.get(BatteryProfile.HEALTH) ?? @string/msg_unknown}"
+                    app:layout_constraintTop_toBottomOf="@id/barrier_home_tech_plug"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/id_home_status" />
+
+                <com.app.batteryalarmgold.widget.IDCardView
+                    android:id="@+id/id_home_status"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.BatteryAlarmGold.IDCardView"
+                    app:idIcon="@drawable/v_status"
+                    app:idTitle="@string/status"
+                    app:idDescription="@{viewModel.batteryDetail.get(BatteryProfile.STATUS) ?? @string/msg_unknown}"
+                    app:layout_constraintTop_toBottomOf="@id/barrier_home_tech_plug"
+                    app:layout_constraintStart_toEndOf="@id/id_home_health"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

@@ -10,7 +10,7 @@ import timber.log.Timber
  * @author Lokik Soni
  * Created on 28-02-2021
  **/
-class ReleaseTree: Timber.Tree() {
+class ReleaseTree : Timber.Tree() {
 
     override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
 

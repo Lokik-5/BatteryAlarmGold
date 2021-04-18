@@ -13,26 +13,19 @@
              and colorSecondary. -->
         <item name="colorPrimary">@color/gray_400</item>
         <item name="colorPrimaryVariant">@color/gray_500</item>
-        <item name="colorSecondary">@color/yellow_300</item>
-        <item name="colorSecondaryVariant">@color/yellow_300</item>
+        <item name="colorSecondary">@color/yellow_700</item>
+        <item name="colorSecondaryVariant">@color/yellow_900</item>
 
         <!-- "On" colors define how text, icons and strokes are colored in relation to the surface
              on which they appear. -->
         <item name="colorOnPrimary">@color/black_900</item>
         <item name="colorOnSecondary">@color/black_900</item>
 
-    </style>
+        <!-- WaveLoadingView customization. -->
+        <item name="wlvCenterTitleColor">@color/white_50</item>
+        <item name="wlvBatteryOkColor">@color/yellow_700</item>
+        <item name="wlvBatteryLowColor">@color/red_300</item>
 
-    <!-- Slider custom theme. -->
-    <style name="ThemeOverlay.BatteryAlarmGold.Slider" parent="ThemeOverlay.Core.Slider">
-        <item name="colorPrimary">@color/yellow_300</item>      <!-- Slider color when enabled. -->
-        <item name="colorOnSurface">@color/yellow_300</item>    <!-- Slider color when disabled. -->
-    </style>
-
-    <!-- Top level button dark theme. -->
-    <style name="ThemeOverlay.BatteryAlarmGold.Button" parent="Base.ThemeOverlay.BatteryAlarmGold.Button">
-        <!-- Button outline color when pressed and text color. -->
-        <item name="colorPrimary">@color/yellow_300</item>
     </style>
 
 </resources>

@@ -1,4 +1,4 @@
-package com.app.batteryalarmgold.batterymanager
+package com.app.batteryalarmgold.batteryhelper
 
 import android.app.Application
 import android.content.BroadcastReceiver
@@ -13,48 +13,53 @@ import com.app.batteryalarmgold.utlis.TimberUtils
 import com.app.batteryalarmgold.utlis.asLiveData
 
 /**
- * A lifecycle observable BroadcastReceiver [BatteryManager]
- * responsible for receiving the broadcast intents.
+ * A lifecycle observable [BatteryProfileHelper].
  *
- * Observe the [batteryDetails] to get the battery-details
+ * Observe the [batteryDetail] to get the battery-profile
  * like level, temperature etc.
  *
  * @author Lokik Soni
  * Created on 03-10-2020
- * Modify on 28-02-2021
+ * Modify on 18-04-2021
  */
-object BatteryManager : LifecycleObserver {
+object BatteryProfileHelper : LifecycleObserver {
 
     // Private fields
+    private val batteryDetailMap = HashMap<BatteryProfile, String?>()
+    private val batteryDetailLiveData = MutableLiveData<HashMap<BatteryProfile, String?>>()
     private lateinit var ctx: Application
-    private val batteryDetailMap = HashMap<String, String?>()
-    private val batteryDetailsLiveData = MutableLiveData<HashMap<String, String?>>()
 
     // Public fields
-    val batteryDetails = batteryDetailsLiveData.asLiveData()
+    val batteryDetail = batteryDetailLiveData.asLiveData()
 
+    /**
+     * This function must be called before any other functions.
+     */
+    fun init(context: Application, lifecycle: Lifecycle) {
+        ctx = context
+        lifecycle.addObserver(this)
+    }
+
+    /**
+     * BroadcastReceiver to listen battery changes.
+     */
     private val receiver = object : BroadcastReceiver() {
 
         override fun onReceive(context: Context?, intent: Intent?) {
 
             context?.let { ctx ->
 
-                intent?.let { intent ->
+                intent?.apply {
 
-                    intent.apply {
+                    batteryDetailMap[BatteryProfile.LEVEL] = getBatteryIntExtra(EXTRA_LEVEL)?.toString()
+                    batteryDetailMap[BatteryProfile.TEMPERATURE] = getBatteryIntExtra(EXTRA_TEMPERATURE)?.toString()
+                    batteryDetailMap[BatteryProfile.VOLTAGE] = getBatteryIntExtra(EXTRA_VOLTAGE)?.toString()
+                    batteryDetailMap[BatteryProfile.TECHNOLOGY] = getBatteryStringExtra(ctx, EXTRA_TECHNOLOGY)
+                    batteryDetailMap[BatteryProfile.PLUGGED] = getBatteryPlugged(EXTRA_PLUGGED)
+                    batteryDetailMap[BatteryProfile.HEALTH] = getBatteryHealth(EXTRA_HEALTH)
+                    batteryDetailMap[BatteryProfile.STATUS] = getBatteryStatus(EXTRA_STATUS)
 
-                        batteryDetailMap[EXTRA_LEVEL] = getBatteryIntExtra(EXTRA_LEVEL)?.toString()
-                        batteryDetailMap[EXTRA_TEMPERATURE] =
-                            getBatteryIntExtra(EXTRA_TEMPERATURE)?.toString()
-                        batteryDetailMap[EXTRA_VOLTAGE] = getBatteryIntExtra(EXTRA_VOLTAGE)?.toString()
-                        batteryDetailMap[EXTRA_TECHNOLOGY] =
-                            getBatteryStringExtra(ctx, EXTRA_TECHNOLOGY)
-                        batteryDetailMap[EXTRA_PLUGGED] = getBatteryPlugged(EXTRA_PLUGGED)
-                        batteryDetailMap[EXTRA_HEALTH] = getBatteryHealth(EXTRA_HEALTH)
-                        batteryDetailMap[EXTRA_STATUS] = getBatteryStatus(EXTRA_STATUS)
-
-                        batteryDetailsLiveData.value = batteryDetailMap
-                    }
+                    batteryDetailLiveData.value = batteryDetailMap
 
                 } ?: TimberUtils.error("BroadcastReceiver onReceive Intent is NULL")
 
@@ -142,6 +147,7 @@ object BatteryManager : LifecycleObserver {
      * @author Lokik Soni
      */
     private fun Intent.getBatteryStatus(name: String) = ctx.run {
+
         when (getIntExtra(name, DEF_VAL)) {
 
             BATTERY_STATUS_CHARGING -> getString(R.string.charging)
@@ -153,34 +159,27 @@ object BatteryManager : LifecycleObserver {
     }
 
     /**
-     * This function must be called before any other
-     * functions.
-     */
-    fun init(context: Application) {
-        ctx = context
-    }
-
-    /**
      * This function will get call automatically with the help of
-     * [LifecycleObserver] when the application/service run by user.
+     * [LifecycleObserver] when the the application/service run by user.
      */
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     fun registerReceiver() {
-        TimberUtils.debug("registerReceiver called.")
 
         // Throw the BatteryAlarmException i.e INIT_ERROR when init method
-        // of BatteryBroadcastManager is not get called.
+        // of BatteryProfileHelper is not get called.
         if (!(::ctx.isInitialized))
             throw BatteryAlarmGoldException(BatteryAlarmGoldException.Error.INIT_ERROR)
 
         // Register the broadcastReceiver
         ctx.registerReceiver(receiver, IntentFilter(Intent.ACTION_BATTERY_CHANGED))
+
+        TimberUtils.debug("registerReceiver called.")
     }
 
     /**
      * This function will get call automatically with the help of
      * [LifecycleObserver] when the application/service killed by user
-     * or application goes into background.
+     * or the application goes into background.
      */
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
     fun unregisterReceiver() {
@@ -188,6 +187,20 @@ object BatteryManager : LifecycleObserver {
 
         // Unregister the broadcastReceiver
         ctx.unregisterReceiver(receiver)
+    }
+
+    /**
+     * Enum class [BatteryProfile] to extract the battery details from
+     * [batteryDetailMap] using these keys like [LEVEL], [TEMPERATURE].
+     */
+    enum class BatteryProfile {
+        LEVEL,
+        TEMPERATURE,
+        VOLTAGE,
+        TECHNOLOGY,
+        PLUGGED,
+        HEALTH,
+        STATUS
     }
 
     // Constant fields

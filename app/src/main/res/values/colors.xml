@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- Colors. -->
+    <!-- For more information on color palettes and their application color theme attributes,
+         see https://material.io/design/color/the-color-system.html#tools-for-picking-colors -->
 
+    <!-- Colors -->
     <color name="white_50">#ffffff</color> <!-- Color primary (light). -->
     <color name="gray_400">#cccccc</color> <!-- Color primary (dark). -->
     <!-- Color primary variant (light), color primary variant (dark). -->
     <color name="gray_500">#8d8d8d</color>
 
-    <color name="yellow_700">#e0b750</color> <!-- Color secondary (light). -->
+    <!-- Color secondary (light), color secondary (dark), color secondary variant (dark). -->
+    <color name="yellow_700">#e0b750</color>
     <color name="yellow_900">#ab871f</color>  <!-- Color secondary variant (light). -->
-
-    <!-- Color secondary (dark), color secondary variant (dark). -->
-    <color name="yellow_300">#ffe980</color>
 
     <!-- Color on primary (light/dark), color on secondary (light/dark). -->
     <color name="black_900">#000000</color>
+
+
+    <!-- Other colors -->
+    <color name="red_500">#D50000</color>   <!-- Color red. (Light) -->
+    <color name="red_300">#E57373</color>   <!-- Color red. (Dark) -->
 
 </resources>

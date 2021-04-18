@@ -34,6 +34,11 @@
         <item name="colorOnPrimary">@color/black_900</item>
         <item name="colorOnSecondary">@color/black_900</item>
 
+        <!-- WaveLoadingView customization. -->
+        <item name="wlvCenterTitleColor">@color/black_800</item>
+        <item name="wlvBatteryOkColor">@color/yellow_700</item>
+        <item name="wlvBatteryLowColor">@color/red_500</item>
+
     </style>
 
     <!-- Slider custom theme. -->
@@ -42,13 +47,17 @@
         <item name="colorOnSurface">@color/yellow_700</item>    <!-- Slider color when disabled. -->
     </style>
 
-    <!-- Button base theme. -->
-    <style name="Base.ThemeOverlay.BatteryAlarmGold.Button" parent="">
-        <!-- Button outline color when pressed and text color. -->
+    <!-- CardView custom theme. -->
+    <style name="ThemeOverlay.BatteryAlarmGold.CardView" parent="">
         <item name="colorPrimary">@color/yellow_700</item>
+        <item name="colorOnSurface">@color/yellow_700</item>
     </style>
 
-    <!-- Top level button light theme. -->
-    <style name="ThemeOverlay.BatteryAlarmGold.Button" parent="Base.ThemeOverlay.BatteryAlarmGold.Button"/>
+    <!-- Button custom theme. -->
+    <style name="ThemeOverlay.BatteryAlarmGold.Button" parent="">
+        <!-- Button outline color when pressed and text color. -->
+        <item name="colorPrimary">@color/yellow_700</item>
+        <item name="colorOnSurface">@color/yellow_700</item>
+    </style>
 
 </resources>

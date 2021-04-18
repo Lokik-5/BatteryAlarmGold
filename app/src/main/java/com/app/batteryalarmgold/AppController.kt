@@ -1,13 +1,14 @@
 package com.app.batteryalarmgold
 
 import android.app.Application
+import androidx.databinding.library.BuildConfig
 import androidx.lifecycle.ProcessLifecycleOwner
-import com.app.batteryalarmgold.batterymanager.BatteryManager
+import com.app.batteryalarmgold.batteryhelper.BatteryProfileHelper
 import com.app.batteryalarmgold.utlis.ReleaseTree
 import timber.log.Timber
 
 /**
- * An Application class [AppController] is
+ * An application class [AppController] is
  * the base class of Android Application.
  *
  * @author Lokik Soni
@@ -18,11 +19,8 @@ class AppController : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        // Initialize the BatteryBroadcastManager.
-        BatteryManager.init(this)
-
-        // Attach the BatteryBroadcastManager with application lifeCycle.
-        ProcessLifecycleOwner.get().lifecycle.addObserver(BatteryManager)
+        // Initialize the BatteryManager and attach to the application lifeCycle.
+        BatteryProfileHelper.init(this, ProcessLifecycleOwner.get().lifecycle)
 
         // Initializes the Timber library
         if (BuildConfig.DEBUG) Timber.plant(Timber.DebugTree())
