@@ -1,7 +1,6 @@
 package com.app.batteryalarmgold
 
 import android.app.Application
-import androidx.databinding.library.BuildConfig
 import androidx.lifecycle.ProcessLifecycleOwner
 import com.app.batteryalarmgold.batteryhelper.BatteryProfileHelper
 import com.app.batteryalarmgold.utlis.ReleaseTree
