@@ -2,16 +2,16 @@
 buildscript {
 
     ext {
-        kotlin_version              = '1.4.31'
-        navigation_version          = '2.2.2'
+        kotlin_version              = '1.5.10'
+        navigation_version          = '2.3.5'
     }
 
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:4.1.2"
+        classpath "com.android.tools.build:gradle:4.2.1"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigation_version"
 
@@ -23,7 +23,7 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 }
 
@@ -40,12 +40,12 @@ ext {
     androidTargetSdkVersion         = 30
 
     // JetPack
-    appcompat_version               = '1.2.0'
+    appcompat_version               = '1.3.0'
     workmanager_version             = '2.5.0'
-    lifecycle_version               = '2.3.0'
-    corektx_version                 = '1.3.2'
-    activityktx                     = '1.2.0'
-    fragmentktx                     = '1.3.0'
+    lifecycle_version               = '2.3.1'
+    corektx_version                 = '1.5.0'
+    activityktx                     = '1.2.3'
+    fragmentktx                     = '1.3.4'
 
     // Android
     constraintlayout_version        = '2.0.4'
@@ -55,7 +55,6 @@ ext {
 
     // Third-Party
     timber_version                  = '4.7.1'
-    waveloading_version             = '0.3.5'
 
     // Test
     junit_version                   = '4.13.2'
@@ -88,8 +87,8 @@ ext {
             lifeCycleProcess        : "androidx.lifecycle:lifecycle-process:$lifecycle_version",
             lifeCycleCommon         : "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version",
             lifeCycleService        : "androidx.lifecycle:lifecycle-service:$lifecycle_version",
-            navigationFragment      : "android.arch.navigation:navigation-fragment-ktx:$navigation_version",
-            navigationUI            : "android.arch.navigation:navigation-ui-ktx:$navigation_version",
+            navigationFragment      : "androidx.navigation:navigation-fragment-ktx:$navigation_version",
+            navigationUI            : "androidx.navigation:navigation-ui-ktx:$navigation_version",
             coreKtx                 : "androidx.core:core-ktx:$corektx_version",
             activity                : "androidx.activity:activity-ktx:$activityktx",
             fragment                : "androidx.fragment:fragment-ktx:$fragmentktx",
@@ -113,13 +112,6 @@ ext {
              * @License Apache 2.0 license [https://github.com/JakeWharton/timber/blob/master/LICENSE.txt]
              */
             timber                  : "com.jakewharton.timber:timber:$timber_version",
-
-            /**
-             *  An Android library that provides a realistic wave-loading effect.
-             * @Link "https://github.com/tangqi92/WaveLoadingView"
-             * @License Apache 2.0 license [https://www.apache.org/licenses/LICENSE-2.0]
-             */
-            waveLoadingView         : "me.itangqi.waveloadingview:library:$waveloading_version"
     ]
 
 
