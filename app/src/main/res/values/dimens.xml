@@ -3,9 +3,6 @@
 
     <!-- Dimens resource used for changing the view size. -->
 
-    <!-- WaveLoadingView dimens. -->
-    <dimen name="wlv_border_width">1dp</dimen>
-
     <dimen name="card_height">300dp</dimen>
 
     <!-- Toolbar dimens. -->

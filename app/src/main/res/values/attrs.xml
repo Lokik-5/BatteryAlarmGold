@@ -9,9 +9,4 @@
         <attr name="idDescription" format="string" />
     </declare-styleable>
 
-    <!-- Custom WaveLoadingView theme attributes. -->
-    <attr name="wlvCenterTitleColor" format="color"/>
-    <attr name="wlvBatteryOkColor" format="color"/>
-    <attr name="wlvBatteryLowColor" format="color"/>
-
 </resources>

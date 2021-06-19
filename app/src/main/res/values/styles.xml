@@ -60,7 +60,6 @@
     <style name="Widget.BatteryAlarmGold.ButtonToggleGroup" parent="">
         <item name="singleSelection">true</item>
         <item name="selectionRequired">true</item>
-        <item name="android:background">?attr/colorSurface</item>
     </style>
 
     <!-- ============== CustomView style. ================ -->
@@ -70,7 +69,7 @@
         <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.Core.MediumComponent.Cut.Top.Left</item>
         <item name="android:layout_margin">@dimen/grid_1</item>
         <item name="idIconBackgroundColor">@drawable/gradient_gold</item>
-        <item name="cardElevation">@dimen/plane_04</item>
+        <item name="cardElevation">@dimen/plane_02</item>
     </style>
 
 </resources>

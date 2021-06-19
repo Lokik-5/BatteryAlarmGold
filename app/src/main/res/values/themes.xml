@@ -34,11 +34,6 @@
         <item name="colorOnPrimary">@color/black_900</item>
         <item name="colorOnSecondary">@color/black_900</item>
 
-        <!-- WaveLoadingView customization. -->
-        <item name="wlvCenterTitleColor">@color/black_800</item>
-        <item name="wlvBatteryOkColor">@color/yellow_700</item>
-        <item name="wlvBatteryLowColor">@color/red_500</item>
-
     </style>
 
     <!-- Slider custom theme. -->

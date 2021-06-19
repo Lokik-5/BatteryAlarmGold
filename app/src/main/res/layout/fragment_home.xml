@@ -5,6 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="android.graphics.Typeface"/>
         <import type="com.app.batteryalarmgold.batteryhelper.BatteryProfileHelper.BatteryProfile"/>
         <import type="com.app.batteryalarmgold.ui.viewmodel.MainViewModel"/>
         <variable name="viewModel" type="MainViewModel" />
@@ -29,6 +30,7 @@
                 style="@style/Widget.BatteryAlarmGold.Toolbar"
                 app:title="@{@string/app_name}"
                 app:titleTextColor="@{@color/color_secondary_variant_emphasis_high}"
+                app:titleStyle="@{Typeface.BOLD}"
                 app:titleColorStartIndex="@{@integer/toolbar_title_color_start_index}"
                 app:titleColorEndIndex="@{@integer/toolbar_title_color_end_index}"
                 app:titleSize="@{1.3f}"/>
@@ -52,19 +54,11 @@
                     android:layout_height="@dimen/card_height"
                     style="@style/Widget.BatteryAlarmGold.CardView.CheckedCardView"
                     android:layout_margin="@dimen/grid_1"
+                    app:cardElevation="@dimen/plane_02"
                     app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/toggle_btn_home_alarm"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent">
-
-                    <me.itangqi.waveloadingview.WaveLoadingView
-                        android:id="@+id/wlv_home_level"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        app:wlv_waveColor="?attr/colorSecondary"
-                        app:wlv_shapeType="square"
-                        app:wlvProgress="@{viewModel.batteryDetail.get(BatteryProfile.LEVEL)}"
-                        android:layout_gravity="center"
-                        android:layout_marginVertical="@dimen/grid_4"/>
 
                 </com.google.android.material.card.MaterialCardView>
 
@@ -75,7 +69,7 @@
                     style="@style/Widget.BatteryAlarmGold.ButtonToggleGroup"
                     app:checkedButton="@id/btn_home_alarm_on"
                     app:layout_constraintTop_toBottomOf="@id/card_home_level"
-                    app:layout_constraintBottom_toBottomOf="@id/card_home_level"
+                    app:layout_constraintBottom_toTopOf="@id/id_home_temperature"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent">
 
